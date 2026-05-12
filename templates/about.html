@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About — AQI India</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,400&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/static/css/style.css" />
+</head>
+<body>
+
+  <!-- ══ HEADER ══════════════════════════════════════════════ -->
+  <header class="site-header">
+    <div class="header-inner" style="max-width:1280px;margin-inline:auto;padding-inline:clamp(14px,4vw,32px)">
+      <a href="/" class="brand-logo" aria-label="AQI Home">
+        <span class="logo-a">A</span><span class="logo-q">Q</span><span class="logo-i">I</span><sup class="logo-reg">®</sup>
+      </a>
+      <nav class="site-nav" style="margin-left:20px">
+        <a href="/"        class="nav-link">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+          Dashboard
+        </a>
+        <a href="/predict" class="nav-link">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l2.4 7.4H22l-6.2 4.5 2.4 7.4L12 17l-6.2 4.3 2.4-7.4L2 9.4h7.6z"/></svg>
+          Predict
+        </a>
+        <a href="/about"   class="nav-link nav-link--active">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+          About
+        </a>
+      </nav>
+      <div class="header-controls" style="margin-left:auto">
+        <button class="theme-toggle-btn" id="themeToggle" aria-label="Toggle dark mode" title="Toggle theme">
+          <svg class="icon-sun" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+          <svg class="icon-moon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+  <script>
+    (function(){
+      var t=localStorage.getItem('aqi-theme')||'light';
+      document.documentElement.setAttribute('data-theme',t);
+      document.addEventListener('DOMContentLoaded',function(){
+        var btn=document.getElementById('themeToggle');
+        if(btn) btn.addEventListener('click',function(){
+          var cur=document.documentElement.getAttribute('data-theme')||'light';
+          var next=cur==='light'?'dark':'light';
+          document.documentElement.setAttribute('data-theme',next);
+          localStorage.setItem('aqi-theme',next);
+        });
+      });
+    })();
+  </script>
+
+  <!-- ══ MAIN ════════════════════════════════════════════════ -->
+  <main class="main-content container" style="padding: 20px 160px ;">
+
+    <!-- ── Hero ──────────────────────────────────────────── -->
+    <section class="about-hero fade-section">
+      <div class="about-hero-content">
+        <div class="ai-badge" style="margin-bottom:14px">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+          About This Project
+        </div>
+        <h1 class="about-title">AirPulse — Next-Day AQI Forecasting</h1>
+        <p class="about-subtitle">
+          AirPulse combines real-time data from the World Air Quality Index (WAQI) API with
+          a machine-learning model trained on years of Indian city pollution records to predict
+          tomorrow's Air Quality Index — giving you actionable health insights before the day begins.
+        </p>
+      </div>
+
+      <!-- Quick Stats -->
+      <div class="about-stats">
+        <div class="stat-card">
+          <div class="stat-value">29</div>
+          <div class="stat-label">Indian Cities</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-value">72K+</div>
+          <div class="stat-label">Training Records</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-value">14</div>
+          <div class="stat-label">Features Used</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-value">500</div>
+          <div class="stat-label">XGBoost Trees</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── How It Works ───────────────────────────────────── -->
+    <section class="fade-section">
+      <h2 class="section-heading">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+        How It Works
+      </h2>
+      <div class="pipeline">
+        <div class="pipeline-step">
+          <div class="step-icon" style="--step-color:#14B8A6">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+          </div>
+          <div class="step-body">
+            <div class="step-num">01</div>
+            <h3 class="step-title">Live Data Fetch</h3>
+            <p class="step-desc">Real-time pollutant readings are fetched from the WAQI API for the selected city — PM2.5, PM10, CO, SO₂, NO₂, and O₃.</p>
+          </div>
+          <div class="step-connector"></div>
+        </div>
+        <div class="pipeline-step">
+          <div class="step-icon" style="--step-color:#F59E0B">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+          </div>
+          <div class="step-body">
+            <div class="step-num">02</div>
+            <h3 class="step-title">Feature Engineering</h3>
+            <p class="step-desc">Missing pollutants are filled with city-level medians. Temporal features (month, day-of-week) are added to capture seasonal and weekly patterns.</p>
+          </div>
+          <div class="step-connector"></div>
+        </div>
+        <div class="pipeline-step">
+          <div class="step-icon" style="--step-color:#8B5CF6">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+          </div>
+          <div class="step-body">
+            <div class="step-num">03</div>
+            <h3 class="step-title">Standardisation</h3>
+            <p class="step-desc">The 14-feature vector is scaled using a pre-fitted StandardScaler (fit on training data only) to prevent data leakage and ensure correct model input.</p>
+          </div>
+          <div class="step-connector"></div>
+        </div>
+        <div class="pipeline-step">
+          <div class="step-icon" style="--step-color:#22C55E">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.4 7.4H22l-6.2 4.5 2.4 7.4L12 17l-6.2 4.3 2.4-7.4L2 9.4h7.6z"/></svg>
+          </div>
+          <div class="step-body">
+            <div class="step-num">04</div>
+            <h3 class="step-title">XGBoost Prediction</h3>
+            <p class="step-desc">The scaled vector is passed to a trained XGBoost regressor (500 trees) which outputs a continuous next-day AQI value, mapped to an AQI category.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Dataset ────────────────────────────────────────── -->
+    <section class="fade-section">
+      <h2 class="section-heading">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg>
+        Dataset
+      </h2>
+      <div class="card about-card">
+        <div class="about-card-cols">
+          <div class="about-card-col">
+            <h3 class="about-card-title">Air Quality Data in India</h3>
+            <p class="about-card-text">
+              The training dataset is sourced from the Central Pollution Control Board (CPCB) via Kaggle.
+              It contains daily averaged pollutant readings and AQI values for 29 major Indian cities
+              spanning 2015–2020.
+            </p>
+            <div class="dataset-tags">
+              <span class="dtag">city_day.csv</span>
+              <span class="dtag">29 cities</span>
+              <span class="dtag">2015–2020</span>
+              <span class="dtag">~72,000 rows</span>
+            </div>
+          </div>
+          <div class="about-card-col">
+            <h3 class="about-card-title">Columns Used</h3>
+            <div class="col-table">
+              <div class="col-row col-row--head">
+                <span>Feature</span><span>Type</span><span>Unit</span>
+              </div>
+              <div class="col-row"><span>PM2.5</span><span>Pollutant</span><span>μg/m³</span></div>
+              <div class="col-row"><span>PM10</span><span>Pollutant</span><span>μg/m³</span></div>
+              <div class="col-row"><span>NO / NO₂ / NOx</span><span>Pollutant</span><span>μg/m³</span></div>
+              <div class="col-row"><span>NH₃, CO, SO₂, O₃</span><span>Pollutant</span><span>μg/m³</span></div>
+              <div class="col-row"><span>Benzene / Toluene / Xylene</span><span>VOC</span><span>μg/m³</span></div>
+              <div class="col-row"><span>Month / DayOfWeek</span><span>Temporal</span><span>—</span></div>
+              <div class="col-row col-row--target"><span>AQI_Tomorrow</span><span>Target</span><span>AQI</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Model Details ──────────────────────────────────── -->
+    <section class="fade-section">
+      <h2 class="section-heading">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l2.4 7.4H22l-6.2 4.5 2.4 7.4L12 17l-6.2 4.3 2.4-7.4L2 9.4h7.6z"/></svg>
+        Model Architecture
+      </h2>
+      <div class="two-col-grid">
+        <div class="card about-card">
+          <h3 class="about-card-title">XGBoost Hyperparameters</h3>
+          <div class="param-table">
+            <div class="param-row"><span class="param-key">n_estimators</span><span class="param-val">500</span></div>
+            <div class="param-row"><span class="param-key">max_depth</span><span class="param-val">6</span></div>
+            <div class="param-row"><span class="param-key">learning_rate</span><span class="param-val">0.05</span></div>
+            <div class="param-row"><span class="param-key">subsample</span><span class="param-val">0.8</span></div>
+            <div class="param-row"><span class="param-key">colsample_bytree</span><span class="param-val">0.8</span></div>
+            <div class="param-row"><span class="param-key">reg_alpha (L1)</span><span class="param-val">0.1</span></div>
+            <div class="param-row"><span class="param-key">reg_lambda (L2)</span><span class="param-val">1.0</span></div>
+            <div class="param-row"><span class="param-key">eval_metric</span><span class="param-val">RMSE</span></div>
+          </div>
+        </div>
+        <div class="card about-card">
+          <h3 class="about-card-title">Training Details</h3>
+          <div class="param-table">
+            <div class="param-row"><span class="param-key">Train / Test split</span><span class="param-val">80% / 20%</span></div>
+            <div class="param-row"><span class="param-key">Scaling</span><span class="param-val">StandardScaler</span></div>
+            <div class="param-row"><span class="param-key">Imputation</span><span class="param-val">City median</span></div>
+            <div class="param-row"><span class="param-key">Target</span><span class="param-val">AQI_Tomorrow (shift −1)</span></div>
+            <div class="param-row"><span class="param-key">Features</span><span class="param-val">14 (12 pollutant + 2 temporal)</span></div>
+          </div>
+          <div class="model-note">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+            Target is created by shifting AQI by −1 day within each city group, ensuring the model learns to predict the next day's air quality from today's readings.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── AQI Reference ──────────────────────────────────── -->
+    <section class="fade-section">
+      <h2 class="section-heading">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+        AQI Category Reference
+      </h2>
+      <div class="card about-card">
+        <div class="aqi-ref-table">
+          <div class="aqi-ref-row aqi-ref-head">
+            <span>Category</span><span>AQI Range</span><span>Health Impact</span><span>Action</span>
+          </div>
+          <div class="aqi-ref-row" style="--row-color:#22C55E">
+            <span><span class="cat-dot"></span>Good</span>
+            <span>0–50</span>
+            <span>Minimal or no impact</span>
+            <span>No restrictions</span>
+          </div>
+          <div class="aqi-ref-row" style="--row-color:#84CC16">
+            <span><span class="cat-dot"></span>Satisfactory</span>
+            <span>51–100</span>
+            <span>Minor breathing discomfort to sensitive people</span>
+            <span>Sensitive groups take precaution</span>
+          </div>
+          <div class="aqi-ref-row" style="--row-color:#F59E0B">
+            <span><span class="cat-dot"></span>Moderate</span>
+            <span>101–200</span>
+            <span>Discomfort to people with lung / heart disease</span>
+            <span>Limit strenuous outdoor activity</span>
+          </div>
+          <div class="aqi-ref-row" style="--row-color:#F97316">
+            <span><span class="cat-dot"></span>Poor</span>
+            <span>201–300</span>
+            <span>Respiratory discomfort on prolonged exposure</span>
+            <span>Avoid outdoor activities, wear mask</span>
+          </div>
+          <div class="aqi-ref-row" style="--row-color:#EF4444">
+            <span><span class="cat-dot"></span>Very Poor</span>
+            <span>301–400</span>
+            <span>Respiratory illness on prolonged exposure</span>
+            <span>Stay indoors, N95 mask mandatory</span>
+          </div>
+          <div class="aqi-ref-row" style="--row-color:#991B1B">
+            <span><span class="cat-dot"></span>Severe</span>
+            <span>401–500</span>
+            <span>Serious health effects for everyone</span>
+            <span>Avoid all outdoor exposure</span>
+          </div>
+          <div class="aqi-ref-row" style="--row-color:#7C3AED">
+            <span><span class="cat-dot"></span>Hazardous</span>
+            <span>500+</span>
+            <span>Health emergency, all populations affected</span>
+            <span>Do not go outside, seal windows</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Tech Stack ─────────────────────────────────────── -->
+    <section class="fade-section">
+      <h2 class="section-heading">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+        Technology Stack
+      </h2>
+      <div class="tech-grid">
+        <div class="tech-card">
+          <div class="tech-icon" style="background:rgba(13,148,136,0.12)">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#0D9488" stroke-width="1.8"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+          </div>
+          <div class="tech-name">Flask</div>
+          <div class="tech-desc">Python web framework powering the REST API and server-side rendering</div>
+        </div>
+        <div class="tech-card">
+          <div class="tech-icon" style="background:rgba(245,158,11,0.12)">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#F59E0B" stroke-width="1.8"><path d="M12 2l2.4 7.4H22l-6.2 4.5 2.4 7.4L12 17l-6.2 4.3 2.4-7.4L2 9.4h7.6z"/></svg>
+          </div>
+          <div class="tech-name">XGBoost</div>
+          <div class="tech-desc">Gradient-boosted decision tree regressor for next-day AQI prediction</div>
+        </div>
+        <div class="tech-card">
+          <div class="tech-icon" style="background:rgba(139,92,246,0.12)">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#8B5CF6" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+          </div>
+          <div class="tech-name">scikit-learn</div>
+          <div class="tech-desc">StandardScaler, train/test split, and performance metrics (MAE, RMSE, R²)</div>
+        </div>
+        <div class="tech-card">
+          <div class="tech-icon" style="background:rgba(34,197,94,0.12)">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#22C55E" stroke-width="1.8"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg>
+          </div>
+          <div class="tech-name">pandas / NumPy</div>
+          <div class="tech-desc">Data loading, cleaning, median imputation, and feature engineering pipeline</div>
+        </div>
+        <div class="tech-card">
+          <div class="tech-icon" style="background:rgba(103,232,249,0.10)">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#67E8F9" stroke-width="1.8"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+          </div>
+          <div class="tech-name">WAQI API</div>
+          <div class="tech-desc">World Air Quality Index API providing real-time sensor data for Indian cities</div>
+        </div>
+        <div class="tech-card">
+          <div class="tech-icon" style="background:rgba(249,115,22,0.10)">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#F97316" stroke-width="1.8"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+          </div>
+          <div class="tech-name">Vanilla JS + CSS</div>
+          <div class="tech-desc">Zero-dependency frontend with custom animations, SVG gauge, and skeleton loaders</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Disclaimer ─────────────────────────────────────── -->
+    <section class="fade-section">
+      <div class="card disclaimer-card">
+        <div class="disclaimer-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+        </div>
+        <div class="disclaimer-body">
+          <h3 class="disclaimer-title">Disclaimer</h3>
+          <p class="disclaimer-text">
+            AirPulse predictions are generated by a machine-learning model and are provided for informational
+            purposes only. They are not a substitute for official advisories from the Central Pollution Control
+            Board (CPCB), the Ministry of Environment, or local government authorities.
+            Prediction accuracy may vary with unusual meteorological conditions, sensor outages, or
+            events not represented in the training data.
+          </p>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ══ FOOTER ══════════════════════════════════════════════ -->
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div class="footer-item">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+        Data: WAQI &amp; CPCB
+      </div>
+      <div class="footer-item">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l2.4 7.4H22l-6.2 4.5 2.4 7.4L12 17l-6.2 4.3 2.4-7.4L2 9.4h7.6z"/></svg>
+        Model: XGBoost Regressor
+      </div>
+      <div class="footer-disclaimer">
+        Predictions are estimates based on historical data. Always follow official government advisories.
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Staggered fade-in (no external JS file needed for about page)
+    document.addEventListener('DOMContentLoaded', () => {
+      const sections = document.querySelectorAll('.fade-section');
+      const obs = new IntersectionObserver(entries => {
+        entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); } });
+      }, { threshold: 0.06 });
+      sections.forEach((s, i) => { s.style.transitionDelay = i * 70 + 'ms'; obs.observe(s); });
+    });
+  </script>
+</body>
+</html>
